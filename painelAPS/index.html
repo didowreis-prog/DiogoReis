@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel APS | Programa de Gestão Clínica e Territorial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #061426;
+      --surface: #0a1e35;
+      --surface-2: #0f2b49;
+      --ink: #f2f7fb;
+      --muted: #a9bfd3;
+      --soft: #d5e3ee;
+      --line: rgba(213, 227, 238, 0.16);
+      --accent: #4fb3ff;
+      --accent-2: #9ed8ff;
+      --green: #76d0c0;
+      --blue: #17466f;
+      --shadow: rgba(0, 0, 0, 0.38);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(79, 179, 255, 0.20), transparent 28rem),
+        radial-gradient(circle at 88% 18%, rgba(22, 75, 122, 0.46), transparent 30rem),
+        linear-gradient(135deg, #061426 0%, #08213d 48%, #0d3158 100%);
+      color: var(--ink);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      overflow: hidden;
+    }
+
+    .hero {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 96px 0 80px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent-2);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    h1 {
+      max-width: 850px;
+      font-size: clamp(3rem, 7vw, 6.7rem);
+      line-height: 0.92;
+      letter-spacing: -0.08em;
+      font-weight: 900;
+    }
+
+    h1 span {
+      display: block;
+      color: var(--accent);
+      font-family: Newsreader, Georgia, serif;
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      font-style: italic;
+    }
+
+    .lead {
+      margin-top: 30px;
+      max-width: 710px;
+      color: var(--soft);
+      font-size: clamp(1.08rem, 1.8vw, 1.32rem);
+    }
+
+    .hero-actions {
+      margin-top: 34px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      font-weight: 800;
+      color: var(--ink);
+      background: rgba(245, 239, 227, 0.06);
+    }
+
+    .button.primary {
+      border: 0;
+      color: #061426;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 18px 45px rgba(79, 179, 255, 0.24);
+    }
+
+    section {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 70px 0;
+    }
+
+    .section-head {
+      max-width: 820px;
+      margin-bottom: 34px;
+    }
+
+    .section-kicker {
+      color: var(--accent-2);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 4rem);
+      line-height: 1;
+      letter-spacing: -0.06em;
+      font-weight: 900;
+    }
+
+    .section-copy {
+      margin-top: 18px;
+      color: var(--soft);
+      font-size: 1.08rem;
+      max-width: 760px;
+    }
+
+    .rich-copy {
+      display: grid;
+      gap: 18px;
+      max-width: 900px;
+      margin-top: 20px;
+      color: var(--soft);
+      font-size: clamp(1.04rem, 1.45vw, 1.18rem);
+    }
+
+    .rich-copy p {
+      color: var(--soft);
+    }
+
+    .rich-copy strong {
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid.three {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 26px;
+      background: rgba(13, 26, 29, 0.72);
+      box-shadow: 0 20px 55px rgba(0, 0, 0, 0.2);
+    }
+
+    .panel .num {
+      display: inline-grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      margin-bottom: 22px;
+      border-radius: 14px;
+      background: rgba(79, 179, 255, 0.16);
+      color: var(--accent-2);
+      font-weight: 900;
+    }
+
+    .panel h3 {
+      margin-bottom: 10px;
+      color: var(--ink);
+      font-size: 1.2rem;
+      line-height: 1.25;
+      letter-spacing: -0.03em;
+    }
+
+    .panel p {
+      color: var(--muted);
+    }
+
+    .care-map {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .care-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .care-item {
+      display: flex;
+      gap: 14px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(245, 239, 227, 0.045);
+    }
+
+    .care-dot {
+      flex: 0 0 auto;
+      width: 14px;
+      height: 14px;
+      margin-top: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(79, 179, 255, 0.12);
+    }
+
+    .care-item strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 1.02rem;
+    }
+
+    .care-item span {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .crossing {
+      min-height: 100%;
+      display: grid;
+      place-items: center;
+      padding: 32px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background:
+        linear-gradient(90deg, transparent 49.5%, rgba(245, 239, 227, 0.14) 49.5%, rgba(245, 239, 227, 0.14) 50.5%, transparent 50.5%),
+        linear-gradient(0deg, transparent 49.5%, rgba(245, 239, 227, 0.14) 49.5%, rgba(245, 239, 227, 0.14) 50.5%, transparent 50.5%),
+        radial-gradient(circle, rgba(79, 179, 255, 0.18), transparent 55%),
+        rgba(13, 26, 29, 0.64);
+    }
+
+    .crossing-box {
+      max-width: 390px;
+      padding: 30px;
+      border-radius: 24px;
+      background: rgba(7, 16, 18, 0.82);
+      border: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .crossing-box strong {
+      display: block;
+      font-size: 1.35rem;
+      line-height: 1.15;
+      letter-spacing: -0.04em;
+      margin-bottom: 12px;
+    }
+
+    .crossing-box span {
+      color: var(--muted);
+    }
+
+    .security {
+      border-radius: 30px;
+      padding: 42px;
+      border: 1px solid rgba(134, 184, 139, 0.35);
+      background:
+        radial-gradient(circle at 8% 12%, rgba(79, 179, 255, 0.20), transparent 26rem),
+        linear-gradient(135deg, rgba(10, 30, 53, 0.94), rgba(15, 43, 73, 0.82));
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.26);
+    }
+
+    .security-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-top: 26px;
+    }
+
+    .security-card {
+      min-height: 170px;
+      padding: 22px;
+      border-radius: 18px;
+      border: 1px solid rgba(245, 239, 227, 0.12);
+      background: rgba(7, 16, 18, 0.38);
+    }
+
+    .security-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #d6f0d9;
+      font-size: 1.05rem;
+    }
+
+    .security-card p {
+      color: var(--soft);
+      font-size: 0.96rem;
+    }
+
+    .metrics {
+      width: 100%;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(13, 26, 29, 0.72);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 20px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+    }
+
+    th {
+      color: var(--accent-2);
+      font-size: 0.76rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: rgba(245, 239, 227, 0.045);
+    }
+
+    td {
+      color: var(--soft);
+    }
+
+    td strong {
+      color: var(--ink);
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .final {
+      padding-bottom: 92px;
+    }
+
+    .statement {
+      border-radius: 30px;
+      padding: 46px;
+      text-align: center;
+      background: linear-gradient(135deg, #d9efff, #7cc7ff);
+      color: #061426;
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.28);
+    }
+
+    .statement h2 {
+      color: #061426;
+    }
+
+    .statement p {
+      max-width: 890px;
+      margin: 20px auto 0;
+      color: #0d2844;
+      font-size: 1.12rem;
+    }
+
+    .implant-contact {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 28px;
+      min-height: 54px;
+      padding: 0 24px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #06345d, #0c5f9f);
+      color: #f2f7fb;
+      font-weight: 900;
+      box-shadow: 0 18px 42px rgba(6, 52, 93, 0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .implant-contact:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 24px 50px rgba(6, 52, 93, 0.45);
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 880px) {
+      .care-map,
+      .grid.two {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 56px;
+        padding-bottom: 54px;
+      }
+
+      .grid.three,
+      .security-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .security,
+      .statement {
+        padding: 28px;
+      }
+
+      .metrics {
+        overflow-x: auto;
+      }
+
+      table {
+        min-width: 720px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero" id="inicio">
+      <div>
+        <div class="eyebrow">Gestao clinica e territorial</div>
+        <h1>Dados do PEC virando cuidado real <span>na Atenção Primária</span></h1>
+        <p class="lead">
+          O Painel APS transforma relatórios do e-SUS APS/PEC em informação útil para organizar linhas de cuidado, localizar pendências, priorizar usuários e apoiar decisões da equipe no território.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#programa">Entender o programa</a>
+          <a class="button" href="#seguranca">Ver segurança</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="programa">
+        <div class="section-head">
+          <div class="section-kicker">O programa</div>
+          <h2>Uma camada inteligente sobre os dados que a unidade já possui.</h2>
+          <div class="rich-copy">
+            <p>
+              O Painel APS é um programa desenvolvido para transformar dados já existentes no e-SUS APS/PEC em informação útil para a gestão clínica e territorial da Atenção Primária. A ferramenta parte de relatórios exportados em formato CSV e realiza, de forma automatizada, o cruzamento de informações entre diferentes linhas de cuidado.
+            </p>
+            <p>
+              A proposta é simples: os dados que normalmente ficam dispersos em relatórios operacionais passam a ser organizados em uma leitura nominal, territorial e orientada por prioridades. Com isso, a equipe consegue identificar usuários em acompanhamento irregular, exames pendentes, atrasos em rastreamentos, lacunas de registro e situações que exigem busca ativa ou reorganização da agenda.
+            </p>
+            <p>
+              O programa funciona como uma ponte entre o prontuário eletrônico e a rotina real da unidade. Ele não cria uma nova obrigação burocrática; ele reaproveita os registros que a APS já produz e os devolve em forma de decisão prática para reunião de equipe, programação de atendimentos, monitoramento de indicadores e responsabilidade sanitária sobre a população adscrita.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid three">
+          <article class="panel">
+            <span class="num">01</span>
+            <h3>Importa dados exportados</h3>
+            <p>Utiliza relatórios operacionais do e-SUS APS/PEC, sem acessar ou alterar diretamente a base oficial do prontuário.</p>
+          </article>
+          <article class="panel">
+            <span class="num">02</span>
+            <h3>Cruza informações clínicas</h3>
+            <p>Relaciona linhas assistenciais, indicadores, prazos e registros para apontar atrasos e necessidades de acompanhamento.</p>
+          </article>
+          <article class="panel">
+            <span class="num">03</span>
+            <h3>Gera listas de trabalho</h3>
+            <p>Organiza usuários, pendências e prioridades para reuniões de equipe, busca ativa, mutirões e planejamento territorial.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="linhas">
+        <div class="section-head">
+          <div class="section-kicker">Cruzamento de linhas</div>
+          <h2>O cuidado deixa de aparecer em pedaços soltos.</h2>
+          <div class="rich-copy">
+            <p>
+              Em vez de analisar hipertensão, diabetes, pré-natal, puerpério, saúde da mulher e territorialização como áreas isoladas, o Painel APS permite enxergar sobreposições importantes e transformar essas interseções em ação concreta.
+            </p>
+            <p>
+              Esse é o principal diferencial do programa: ele cruza linhas de cuidado com prazos, indicadores, registros clínicos e localização territorial. Assim, uma pendência deixa de ser apenas um número agregado e passa a aparecer como uma necessidade concreta, vinculada a uma pessoa, a uma linha assistencial e a uma microárea.
+            </p>
+            <p>
+              Na prática, a equipe passa a enxergar quem precisa de cuidado, qual pendência existe, em qual linha assistencial ela se localiza, há quanto tempo está atrasada e onde esse usuário está no território. Essa visão integrada ajuda a reduzir perdas de seguimento, qualificar a busca ativa e direcionar melhor o trabalho de médicos, enfermeiros, técnicos e ACS.
+            </p>
+          </div>
+        </div>
+
+        <div class="care-map">
+          <div class="care-list">
+            <div class="care-item">
+              <span class="care-dot"></span>
+              <div>
+                <strong>Gestante com acompanhamento incompleto</strong>
+                <span>Identificação de consultas, sorologias e janelas assistenciais pendentes durante o pré-natal.</span>
+              </div>
+            </div>
+            <div class="care-item">
+              <span class="care-dot"></span>
+              <div>
+                <strong>Pessoa diabética sem HbA1c recente</strong>
+                <span>Localização rápida de usuários sem solicitação ou avaliação semestral de hemoglobina glicada.</span>
+              </div>
+            </div>
+            <div class="care-item">
+              <span class="care-dot"></span>
+              <div>
+                <strong>Hipertenso sem PA registrada</strong>
+                <span>Busca de pessoas sem aferição pressórica ou consulta médica/enfermagem no intervalo definido.</span>
+              </div>
+            </div>
+            <div class="care-item">
+              <span class="care-dot"></span>
+              <div>
+                <strong>Rastreamento preventivo atrasado</strong>
+                <span>Identificação de mulheres em faixa etária prioritária com citopatológico ou mamografia fora da janela.</span>
+              </div>
+            </div>
+            <div class="care-item">
+              <span class="care-dot"></span>
+              <div>
+                <strong>Microárea com concentração de pendências</strong>
+                <span>Apoio ao planejamento dos ACS e à priorização territorial da equipe.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="crossing">
+            <div class="crossing-box">
+              <strong>Do dado bruto à decisão da equipe</strong>
+              <span>O programa mostra quem precisa de cuidado, qual pendência existe, em qual linha assistencial ela se localiza e onde esse usuário está no território.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="seguranca">
+        <div class="security">
+          <div class="section-head" style="margin-bottom: 0;">
+            <div class="section-kicker">Segurança e sigilo</div>
+            <h2>Processamento local, offline e sem envio de dados sensíveis.</h2>
+            <div class="rich-copy">
+              <p>
+                A segurança é um eixo central da proposta. O Painel APS foi pensado para funcionar de forma 100% offline, no próprio computador da unidade, sem envio de prontuários, nomes ou identificadores para servidores externos.
+              </p>
+              <p>
+                O programa trabalha apenas com arquivos exportados pelo próprio profissional e opera em modo de leitura. Isso significa que ele não escreve, altera, injeta ou corrompe informações na base oficial do e-SUS PEC. A base original permanece preservada; o Painel apenas interpreta relatórios já gerados e organiza essas informações em uma interface mais útil para o cuidado.
+              </p>
+              <p>
+                Essa arquitetura reduz riscos de exposição de dados sensíveis, preserva o sigilo profissional e favorece conformidade com a LGPD. Também permite o uso em unidades com internet instável ou ausente, sem depender de servidores externos, contas em nuvem ou transmissão de dados identificáveis.
+              </p>
+            </div>
+          </div>
+
+          <div class="security-grid">
+            <div class="security-card">
+              <strong>Modo de leitura</strong>
+              <p>O programa trabalha com arquivos exportados e não modifica a base oficial do e-SUS PEC.</p>
+            </div>
+            <div class="security-card">
+              <strong>Privacidade local</strong>
+              <p>Os dados permanecem no computador da unidade, reduzindo risco de exposição de informações sensíveis.</p>
+            </div>
+            <div class="security-card">
+              <strong>LGPD e sigilo profissional</strong>
+              <p>A lógica offline favorece conformidade com a LGPD e preserva o sigilo assistencial.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="vantagens">
+        <div class="section-head">
+          <div class="section-kicker">Vantagens práticas</div>
+          <h2>Mais clareza para agir, menos tempo perdido procurando pendências.</h2>
+          <div class="rich-copy">
+            <p>
+              Na prática, o programa converte dados brutos em listas de trabalho. Isso facilita reuniões de equipe, planejamento dos ACS, busca ativa, organização de mutirões, priorização de agendas e acompanhamento de indicadores.
+            </p>
+            <p>
+              A unidade passa a trabalhar com uma visão mais clara da sua população. Em vez de depender apenas da memória da equipe, de planilhas manuais ou de conferências demoradas no prontuário, o Painel APS aponta prioridades de forma objetiva e reproduzível. Isso melhora a capacidade de planejar ações, acompanhar resultados e corrigir vazios assistenciais antes que eles se transformem em agravamentos evitáveis.
+            </p>
+            <p>
+              Outra vantagem é a simplicidade operacional. O programa é leve, gratuito, executável em Windows e não exige instalação complexa nem permissões administrativas. Pode ser utilizado em unidades com estrutura básica e permite atualização das regras de análise conforme mudanças em notas técnicas, indicadores ou prioridades locais.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <article class="panel">
+            <span class="num">A</span>
+            <h3>Organização territorial</h3>
+            <p>Permite visualizar prioridades por microárea, favorecendo ações planejadas no território e melhor distribuição do trabalho da equipe.</p>
+          </article>
+          <article class="panel">
+            <span class="num">B</span>
+            <h3>Vigilância ativa</h3>
+            <p>Ajuda a unidade a sair de uma lógica apenas reativa, identificando usuários em risco antes que a demanda apareça como urgência.</p>
+          </article>
+          <article class="panel">
+            <span class="num">C</span>
+            <h3>Uso em estrutura simples</h3>
+            <p>É leve, gratuito, executável em Windows e adequado para unidades com internet instável ou ausente.</p>
+          </article>
+          <article class="panel">
+            <span class="num">D</span>
+            <h3>Atualização das regras</h3>
+            <p>A parametrização permite ajustar critérios de análise conforme notas técnicas, indicadores e prioridades assistenciais.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="final">
+        <div class="statement">
+          <h2>Uma ferramenta de apoio à responsabilidade sanitária da APS.</h2>
+          <p>
+            O Painel APS funciona como uma camada inteligente de apoio à gestão do cuidado. Ele não substitui o julgamento clínico nem o trabalho da equipe, mas amplia a capacidade de identificar riscos, organizar prioridades, acompanhar populações adscritas e transformar informação em ação. Seu valor está em tornar visível o que muitas vezes fica escondido nos relatórios: pessoas com necessidades concretas, distribuídas no território, aguardando acompanhamento oportuno da Atenção Primária.
+          </p>
+          <a
+            class="implant-contact"
+            href="https://wa.me/5571920035632?text=Ol%C3%A1%2C%20Dr.%20Diogo.%20Tenho%20interesse%20em%20conversar%20sobre%20a%20implanta%C3%A7%C3%A3o%20do%20Painel%20APS%20na%20minha%20unidade%20ou%20munic%C3%ADpio."
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Contato para Implantação
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <strong>Dr. Diogo Machado Soares dos Reis - CREMEB 31.442</strong>
+        <span>Em parceria com Towercom Tecnologias - CNPJ 50.899.323/0001-37</span>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
