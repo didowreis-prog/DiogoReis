@@ -9,18 +9,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #061426;
-      --surface: #0a1e35;
-      --surface-2: #0f2b49;
-      --ink: #f2f7fb;
-      --muted: #a9bfd3;
-      --soft: #d5e3ee;
-      --line: rgba(213, 227, 238, 0.16);
-      --accent: #4fb3ff;
-      --accent-2: #9ed8ff;
-      --green: #76d0c0;
-      --blue: #17466f;
-      --shadow: rgba(0, 0, 0, 0.38);
+      --bg: #07151c;
+      --surface: #0d2029;
+      --surface-2: #122c38;
+      --ink: #f4f8f9;
+      --muted: #91a6ad;
+      --soft: #c9d7db;
+      --line: rgba(201, 215, 219, 0.14);
+      --line-strong: rgba(201, 215, 219, 0.24);
+      --accent: #5db7c5;
+      --accent-2: #a8d6ce;
+      --green: #7dc8a9;
+      --blue: #1a4d5a;
+      --shadow: rgba(0, 0, 0, 0.28);
+      --max: 1120px;
     }
 
     * {
@@ -36,12 +38,16 @@
     body {
       min-height: 100vh;
       background:
-        radial-gradient(circle at 12% 8%, rgba(79, 179, 255, 0.20), transparent 28rem),
-        radial-gradient(circle at 88% 18%, rgba(22, 75, 122, 0.46), transparent 30rem),
-        linear-gradient(135deg, #061426 0%, #08213d 48%, #0d3158 100%);
+        linear-gradient(90deg, rgba(168, 214, 206, 0.035) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(168, 214, 206, 0.028) 1px, transparent 1px),
+        radial-gradient(circle at 18% 8%, rgba(93, 183, 197, 0.16), transparent 30rem),
+        linear-gradient(180deg, #081923 0%, #07151c 42%, #091820 100%);
+      background-size: 56px 56px, 56px 56px, auto, auto;
       color: var(--ink);
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
     a {
@@ -49,14 +55,31 @@
       text-decoration: none;
     }
 
+    p, span, strong, h1, h2, h3 {
+      overflow-wrap: anywhere;
+    }
+
     .page {
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
     .hero {
-      width: min(1180px, calc(100% - 32px));
+      width: min(var(--max), calc(100% - 40px));
       margin: 0 auto;
-      padding: 96px 0 80px;
+      padding: 88px 0 64px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 76px;
+    }
+
+    .brand-logo {
+      width: min(260px, 54vw);
+      height: auto;
+      filter: drop-shadow(0 18px 34px rgba(0, 0, 0, 0.22));
     }
 
     .eyebrow {
@@ -64,97 +87,109 @@
       align-items: center;
       gap: 10px;
       color: var(--accent-2);
-      font-size: 0.78rem;
-      font-weight: 900;
-      letter-spacing: 0.16em;
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      margin-bottom: 22px;
+      margin-bottom: 18px;
     }
 
     .eyebrow::before {
       content: "";
-      width: 34px;
-      height: 2px;
+      width: 30px;
+      height: 1px;
       border-radius: 999px;
       background: var(--accent);
     }
 
     h1 {
-      max-width: 850px;
-      font-size: clamp(3rem, 7vw, 6.7rem);
-      line-height: 0.92;
-      letter-spacing: -0.08em;
-      font-weight: 900;
+      max-width: 820px;
+      font-size: clamp(3rem, 6vw, 5.65rem);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+      font-weight: 850;
+      text-wrap: balance;
     }
 
     h1 span {
       display: block;
-      color: var(--accent);
+      color: var(--accent-2);
       font-family: Newsreader, Georgia, serif;
-      font-weight: 500;
-      letter-spacing: -0.04em;
+      font-weight: 520;
+      letter-spacing: -0.025em;
       font-style: italic;
     }
 
     .lead {
-      margin-top: 30px;
-      max-width: 710px;
+      margin-top: 28px;
+      max-width: 760px;
       color: var(--soft);
-      font-size: clamp(1.08rem, 1.8vw, 1.32rem);
+      font-size: clamp(1.03rem, 1.5vw, 1.18rem);
+      line-height: 1.7;
     }
 
     .hero-actions {
       margin-top: 34px;
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
     }
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      font-weight: 800;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 12px;
+      border: 1px solid var(--line-strong);
+      font-size: 0.93rem;
+      font-weight: 760;
       color: var(--ink);
-      background: rgba(245, 239, 227, 0.06);
+      background: rgba(244, 248, 249, 0.045);
+      transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+    }
+
+    .button:hover {
+      border-color: rgba(168, 214, 206, 0.46);
+      background: rgba(244, 248, 249, 0.07);
+      transform: translateY(-1px);
     }
 
     .button.primary {
-      border: 0;
-      color: #061426;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: 0 18px 45px rgba(79, 179, 255, 0.24);
+      border-color: transparent;
+      color: #06151a;
+      background: linear-gradient(135deg, #8fd7d5, #b9dfc8);
+      box-shadow: 0 16px 34px rgba(93, 183, 197, 0.18);
     }
 
     section {
-      width: min(1180px, calc(100% - 32px));
+      width: min(var(--max), calc(100% - 40px));
       margin: 0 auto;
-      padding: 70px 0;
+      padding: 62px 0;
     }
 
     .section-head {
-      max-width: 820px;
-      margin-bottom: 34px;
+      max-width: 860px;
+      margin-bottom: 28px;
     }
 
     .section-kicker {
       color: var(--accent-2);
-      font-size: 0.78rem;
-      font-weight: 900;
-      letter-spacing: 0.16em;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.13em;
       text-transform: uppercase;
       margin-bottom: 12px;
     }
 
     h2 {
-      font-size: clamp(2rem, 4vw, 4rem);
-      line-height: 1;
-      letter-spacing: -0.06em;
-      font-weight: 900;
+      max-width: 900px;
+      font-size: clamp(2rem, 3.4vw, 3.35rem);
+      line-height: 1.04;
+      letter-spacing: -0.045em;
+      font-weight: 820;
+      text-wrap: balance;
     }
 
     .section-copy {
@@ -166,11 +201,12 @@
 
     .rich-copy {
       display: grid;
-      gap: 18px;
+      gap: 16px;
       max-width: 900px;
       margin-top: 20px;
       color: var(--soft);
-      font-size: clamp(1.04rem, 1.45vw, 1.18rem);
+      font-size: clamp(1rem, 1.25vw, 1.1rem);
+      line-height: 1.72;
     }
 
     .rich-copy p {
@@ -184,7 +220,7 @@
 
     .grid {
       display: grid;
-      gap: 18px;
+      gap: 14px;
     }
 
     .grid.three {
@@ -197,30 +233,31 @@
 
     .panel {
       border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 26px;
-      background: rgba(13, 26, 29, 0.72);
-      box-shadow: 0 20px 55px rgba(0, 0, 0, 0.2);
+      border-radius: 12px;
+      padding: 22px;
+      background: rgba(13, 32, 41, 0.76);
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.16);
     }
 
     .panel .num {
       display: inline-grid;
       place-items: center;
-      width: 42px;
-      height: 42px;
-      margin-bottom: 22px;
-      border-radius: 14px;
-      background: rgba(79, 179, 255, 0.16);
+      width: 38px;
+      height: 38px;
+      margin-bottom: 18px;
+      border-radius: 10px;
+      background: rgba(93, 183, 197, 0.14);
       color: var(--accent-2);
-      font-weight: 900;
+      font-size: 0.86rem;
+      font-weight: 850;
     }
 
     .panel h3 {
       margin-bottom: 10px;
       color: var(--ink);
-      font-size: 1.2rem;
+      font-size: 1.08rem;
       line-height: 1.25;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.015em;
     }
 
     .panel p {
@@ -230,32 +267,32 @@
     .care-map {
       display: grid;
       grid-template-columns: 0.9fr 1.1fr;
-      gap: 22px;
+      gap: 16px;
       align-items: stretch;
     }
 
     .care-list {
       display: grid;
-      gap: 12px;
+      gap: 10px;
     }
 
     .care-item {
       display: flex;
-      gap: 14px;
-      padding: 18px;
+      gap: 12px;
+      padding: 16px;
       border: 1px solid var(--line);
-      border-radius: 18px;
+      border-radius: 12px;
       background: rgba(245, 239, 227, 0.045);
     }
 
     .care-dot {
       flex: 0 0 auto;
-      width: 14px;
-      height: 14px;
+      width: 10px;
+      height: 10px;
       margin-top: 6px;
       border-radius: 50%;
       background: var(--accent);
-      box-shadow: 0 0 0 6px rgba(79, 179, 255, 0.12);
+      box-shadow: 0 0 0 5px rgba(93, 183, 197, 0.1);
     }
 
     .care-item strong {
@@ -274,27 +311,35 @@
       display: grid;
       place-items: center;
       padding: 32px;
-      border: 1px solid var(--line);
-      border-radius: 24px;
+      border: 0;
+      border-radius: 0;
       background:
-        linear-gradient(90deg, transparent 49.5%, rgba(245, 239, 227, 0.14) 49.5%, rgba(245, 239, 227, 0.14) 50.5%, transparent 50.5%),
-        linear-gradient(0deg, transparent 49.5%, rgba(245, 239, 227, 0.14) 49.5%, rgba(245, 239, 227, 0.14) 50.5%, transparent 50.5%),
-        radial-gradient(circle, rgba(79, 179, 255, 0.18), transparent 55%),
-        rgba(13, 26, 29, 0.64);
+        radial-gradient(circle at 50% 42%, rgba(93, 183, 197, 0.12), transparent 58%);
+      overflow: hidden;
+      position: relative;
     }
 
     .crossing-box {
+      position: relative;
+      z-index: 1;
       max-width: 390px;
-      padding: 30px;
-      border-radius: 24px;
-      background: rgba(7, 16, 18, 0.82);
-      border: 1px solid var(--line);
+      padding: 0;
+      border-radius: 0;
+      background: transparent;
+      border: 0;
       text-align: center;
+    }
+
+    .pulo-logo {
+      width: min(230px, 76%);
+      height: auto;
+      margin: 0 auto 24px;
+      filter: drop-shadow(0 18px 32px rgba(0, 0, 0, 0.28));
     }
 
     .crossing-box strong {
       display: block;
-      font-size: 1.35rem;
+      font-size: 1.18rem;
       line-height: 1.15;
       letter-spacing: -0.04em;
       margin-bottom: 12px;
@@ -305,26 +350,26 @@
     }
 
     .security {
-      border-radius: 30px;
-      padding: 42px;
-      border: 1px solid rgba(134, 184, 139, 0.35);
+      border-radius: 16px;
+      padding: 34px;
+      border: 1px solid rgba(125, 200, 169, 0.28);
       background:
-        radial-gradient(circle at 8% 12%, rgba(79, 179, 255, 0.20), transparent 26rem),
-        linear-gradient(135deg, rgba(10, 30, 53, 0.94), rgba(15, 43, 73, 0.82));
-      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.26);
+        radial-gradient(circle at 8% 12%, rgba(125, 200, 169, 0.16), transparent 24rem),
+        linear-gradient(135deg, rgba(13, 32, 41, 0.96), rgba(18, 44, 56, 0.86));
+      box-shadow: 0 24px 56px rgba(0, 0, 0, 0.2);
     }
 
     .security-grid {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 16px;
+      gap: 12px;
       margin-top: 26px;
     }
 
     .security-card {
-      min-height: 170px;
-      padding: 22px;
-      border-radius: 18px;
+      min-height: 154px;
+      padding: 20px;
+      border-radius: 12px;
       border: 1px solid rgba(245, 239, 227, 0.12);
       background: rgba(7, 16, 18, 0.38);
     }
@@ -332,8 +377,8 @@
     .security-card strong {
       display: block;
       margin-bottom: 8px;
-      color: #d6f0d9;
-      font-size: 1.05rem;
+      color: #d7eee5;
+      font-size: 1rem;
     }
 
     .security-card p {
@@ -345,8 +390,8 @@
       width: 100%;
       overflow: hidden;
       border: 1px solid var(--line);
-      border-radius: 22px;
-      background: rgba(13, 26, 29, 0.72);
+      border-radius: 12px;
+      background: rgba(13, 32, 41, 0.76);
     }
 
     table {
@@ -355,7 +400,7 @@
     }
 
     th, td {
-      padding: 20px;
+      padding: 18px;
       text-align: left;
       vertical-align: top;
       border-bottom: 1px solid var(--line);
@@ -388,22 +433,22 @@
     }
 
     .statement {
-      border-radius: 30px;
-      padding: 46px;
+      border-radius: 16px;
+      padding: 38px;
       text-align: center;
-      background: linear-gradient(135deg, #d9efff, #7cc7ff);
-      color: #061426;
-      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.28);
+      background: linear-gradient(135deg, #d9eee9, #90d4d3);
+      color: #06151a;
+      box-shadow: 0 24px 58px rgba(0, 0, 0, 0.24);
     }
 
     .statement h2 {
-      color: #061426;
+      color: #06151a;
     }
 
     .statement p {
       max-width: 890px;
       margin: 20px auto 0;
-      color: #0d2844;
+      color: #173138;
       font-size: 1.12rem;
     }
 
@@ -414,11 +459,11 @@
       margin-top: 28px;
       min-height: 54px;
       padding: 0 24px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #06345d, #0c5f9f);
+      border-radius: 12px;
+      background: linear-gradient(135deg, #0f3b46, #155c68);
       color: #f2f7fb;
       font-weight: 900;
-      box-shadow: 0 18px 42px rgba(6, 52, 93, 0.35);
+      box-shadow: 0 16px 36px rgba(7, 21, 28, 0.28);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
@@ -444,14 +489,119 @@
     }
 
     @media (max-width: 880px) {
+      body {
+        background-size: 44px 44px, 44px 44px, auto, auto;
+      }
+
       .care-map,
       .grid.two {
         grid-template-columns: 1fr;
       }
 
       .hero {
-        padding-top: 56px;
-        padding-bottom: 54px;
+        width: min(calc(100% - 32px), var(--max));
+        padding-top: 48px;
+        padding-bottom: 48px;
+      }
+
+      .brand-row {
+        justify-content: flex-start;
+        margin-bottom: 44px;
+      }
+
+      .brand-logo {
+        width: min(218px, 68vw);
+      }
+
+      .hero > div,
+      .section-head,
+      .rich-copy {
+        width: 100%;
+        max-width: min(100%, 358px);
+        min-width: 0;
+      }
+
+      .page,
+      main,
+      section,
+      .hero,
+      .grid,
+      .panel,
+      .care-map,
+      .care-list,
+      .care-item,
+      .security,
+      .statement {
+        max-width: 100%;
+        min-width: 0;
+      }
+
+      .eyebrow {
+        gap: 9px;
+        margin-bottom: 16px;
+        font-size: 0.68rem;
+        letter-spacing: 0.1em;
+      }
+
+      .eyebrow::before {
+        width: 26px;
+      }
+
+      h1 {
+        max-width: 100%;
+        font-size: clamp(2.16rem, 11vw, 3.2rem);
+        line-height: 1.01;
+        letter-spacing: -0.025em;
+      }
+
+      h1 span {
+        letter-spacing: -0.018em;
+      }
+
+      .lead {
+        margin-top: 24px;
+        font-size: 1rem;
+        line-height: 1.66;
+        max-width: min(100%, 358px);
+      }
+
+      .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-top: 28px;
+        max-width: min(100%, 358px);
+      }
+
+      .button {
+        width: 100%;
+        min-height: 48px;
+      }
+
+      section {
+        width: min(calc(100% - 32px), var(--max));
+        padding: 48px 0;
+      }
+
+      .section-head {
+        margin-bottom: 22px;
+      }
+
+      .section-kicker {
+        font-size: 0.68rem;
+        letter-spacing: 0.1em;
+      }
+
+      h2 {
+        max-width: 13ch;
+        font-size: clamp(1.42rem, 7vw, 2.05rem);
+        line-height: 1.1;
+        letter-spacing: -0.015em;
+      }
+
+      .rich-copy {
+        gap: 14px;
+        font-size: 1rem;
+        line-height: 1.68;
       }
 
       .grid.three,
@@ -459,9 +609,19 @@
         grid-template-columns: 1fr;
       }
 
+      .panel,
+      .care-item,
+      .security-card {
+        border-radius: 12px;
+      }
+
+      .pulo-logo {
+        width: min(190px, 76%);
+      }
+
       .security,
       .statement {
-        padding: 28px;
+        padding: 24px;
       }
 
       .metrics {
@@ -477,6 +637,9 @@
 <body>
   <div class="page">
     <header class="hero" id="inicio">
+      <div class="brand-row" aria-label="Painel APS">
+        <img class="brand-logo" src="assets/painel-aps-logo.png" width="2154" height="955" alt="Painel APS" decoding="async">
+      </div>
       <div>
         <div class="eyebrow">Gestao clinica e territorial</div>
         <h1>Dados do PEC virando cuidado real <span>na Atenção Primária</span></h1>
@@ -585,6 +748,7 @@
 
           <div class="crossing">
             <div class="crossing-box">
+              <img class="pulo-logo" src="assets/pulodogato.png" width="316" height="256" alt="Painel APS - Pulo do Gato" loading="lazy" decoding="async">
               <strong>Do dado bruto à decisão da equipe</strong>
               <span>O programa mostra quem precisa de cuidado, qual pendência existe, em qual linha assistencial ela se localiza e onde esse usuário está no território.</span>
             </div>
