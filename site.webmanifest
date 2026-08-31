@@ -1,0 +1,19 @@
+{
+  "name": "Dr. Diogo Reis",
+  "short_name": "Diogo Reis",
+  "description": "Página profissional do Dr. Diogo Reis, médico CREMEB 31.442 na Bahia.",
+  "lang": "pt-BR",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#06171a",
+  "theme_color": "#06171a",
+  "icons": [
+    {
+      "src": "/assets/diogo-reis.jpg",
+      "sizes": "1200x830",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}
