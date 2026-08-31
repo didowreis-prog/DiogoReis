@@ -24,19 +24,18 @@
   <meta property="og:site_name" content="Dr. Diogo Reis">
   <meta property="og:description" content="Médico CREMEB 31.442 na Bahia. Teleconsulta médica e consulta domiciliar com escuta cuidadosa e decisão compartilhada.">
   <meta property="og:url" content="https://diogoreis.med.br/">
-  <meta property="og:image" content="https://diogoreis.med.br/assets/diogo-reis.jpg">
-  <meta property="og:image:secure_url" content="https://diogoreis.med.br/assets/diogo-reis.jpg">
-  <meta property="og:image:type" content="image/jpeg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="830">
-  <meta property="og:image:alt" content="Retrato do Dr. Diogo Reis">
+  <meta property="og:image" content="https://diogoreis.med.br/assets/logo-dr.png">
+  <meta property="og:image:secure_url" content="https://diogoreis.med.br/assets/logo-dr.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="436">
+  <meta property="og:image:height" content="364">
+  <meta property="og:image:alt" content="Logo DR do Dr. Diogo Reis">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Dr. Diogo Reis - Médico | CREMEB 31.442">
   <meta name="twitter:description" content="Teleconsulta médica em território nacional e consulta domiciliar conforme disponibilidade local.">
-  <meta name="twitter:image" content="https://diogoreis.med.br/assets/diogo-reis.jpg">
+  <meta name="twitter:image" content="https://diogoreis.med.br/assets/logo-dr.png">
   <title>Dr. Diogo Reis | Médico CREMEB 31.442 na Bahia</title>
   <link rel="preload" as="image" href="assets/hero-bg.png">
-  <link rel="preload" as="image" href="assets/diogo-reis.jpg">
   <style>
     :root {
       --bg: #06171a;
@@ -127,6 +126,13 @@
       line-height: 0.8;
       letter-spacing: -0.13em;
       text-shadow: 0 0 22px rgba(215, 189, 123, 0.14);
+    }
+    .brand-logo {
+      width: clamp(52px, 6vw, 70px);
+      height: clamp(43px, 5.4vw, 58px);
+      object-fit: contain;
+      filter: drop-shadow(0 0 18px rgba(215, 189, 123, 0.16));
+      flex: 0 0 auto;
     }
     .brand-copy { display: grid; line-height: 1.1; }
     .brand-name {
@@ -329,9 +335,9 @@
     .hero .container,
     .site-header .container,
     .mobile-nav.container {
-      max-width: 768px;
+      max-width: 860px;
     }
-    .hero-copy { max-width: 568px; }
+    .hero-copy { max-width: 650px; min-width: 0; }
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -393,76 +399,6 @@
       align-items: center;
       gap: 18px;
     }
-    .hero-note {
-      max-width: 430px;
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 18px;
-      margin: 30px 0 0;
-      color: rgba(207, 215, 208, 0.68);
-      font-size: 0.98rem;
-      line-height: 1.45;
-    }
-    .hero-note .icon { width: 1.65rem; height: 1.65rem; color: var(--gold); }
-
-    .portrait {
-      position: relative;
-      width: 100%;
-      max-width: none;
-      min-height: 470px;
-      justify-self: stretch;
-      margin: 4px 0 0;
-      overflow: hidden;
-      border: 1px solid rgba(215, 189, 123, 0.24);
-      border-radius: 32px;
-      background:
-        linear-gradient(to top, rgba(6, 23, 26, 0.64), rgba(6, 23, 26, 0.06)),
-        url("assets/diogo-reis.jpg") center 23% / cover no-repeat,
-        var(--surface);
-      box-shadow: var(--shadow);
-    }
-    .portrait img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 23%;
-      filter: saturate(0.96) contrast(1.03);
-    }
-    .portrait::after {
-      position: absolute;
-      inset: 0;
-      content: "";
-      background: linear-gradient(to top, rgba(6, 23, 26, 0.82), transparent 46%);
-      pointer-events: none;
-    }
-    .portrait-caption {
-      position: absolute;
-      z-index: 2;
-      right: 24px;
-      bottom: 24px;
-      left: 24px;
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 18px;
-      align-items: center;
-      padding: 20px 22px;
-      background: rgba(14, 29, 29, 0.72);
-      border: 1px solid rgba(228, 230, 214, 0.22);
-      border-radius: 22px;
-      backdrop-filter: blur(18px);
-    }
-    .portrait-caption .brand-mark { font-size: 2.5rem; }
-    .portrait-caption strong {
-      display: block;
-      margin-bottom: 4px;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.55rem;
-      font-weight: 500;
-    }
-    .portrait-caption span { color: #d2d6d0; font-size: 0.95rem; letter-spacing: 0.04em; }
-
     .credential-strip {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -507,7 +443,6 @@
     .about-card,
     .service-card,
     details,
-    .project,
     .safety-note {
       background: var(--surface);
       border: 1px solid var(--line-soft);
@@ -614,8 +549,7 @@
     .gold .check-list .icon { color: var(--gold); }
     .service-card .button { width: 100%; margin-top: auto; }
 
-    .process-grid,
-    .project-grid {
+    .process-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
@@ -624,8 +558,7 @@
       padding-top: 20px;
       border-top: 1px solid rgba(215, 189, 123, 0.32);
     }
-    .step-number,
-    .project-label {
+    .step-number {
       color: var(--gold);
       font-size: 0.78rem;
       font-weight: 850;
@@ -647,37 +580,6 @@
     .safety-note .icon { margin-top: 2px; color: var(--danger); }
     .safety-note strong { display: block; color: var(--text); }
     .safety-note p { margin: 4px 0 0; color: var(--muted); font-size: 0.94rem; }
-
-    .lab-panel {
-      position: relative;
-      overflow: hidden;
-      padding: clamp(26px, 5vw, 48px);
-      background:
-        linear-gradient(135deg, rgba(12, 31, 34, 0.92), rgba(6, 23, 26, 0.92)),
-        url("assets/hero-bg.png") right center / cover no-repeat;
-      border: 1px solid rgba(215, 189, 123, 0.20);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow);
-    }
-    .lab-panel::before {
-      position: absolute;
-      inset: 0;
-      content: "";
-      background: linear-gradient(90deg, rgba(6, 23, 26, 0.92), rgba(6, 23, 26, 0.68));
-      pointer-events: none;
-    }
-    .lab-panel > * { position: relative; }
-    .project-grid { margin-top: 30px; }
-    .project {
-      padding: 22px;
-      border-radius: var(--radius);
-      background: rgba(5, 18, 20, 0.62);
-      backdrop-filter: blur(10px);
-    }
-    .project:nth-child(2) .project-label { color: var(--olive); }
-    .project:nth-child(3) .project-label { color: var(--danger); }
-    .project h3 { margin: 13px 0 8px; font-size: 1.15rem; }
-    .project p { margin: 0; color: var(--muted); font-size: 0.94rem; }
 
     .faq-list { display: grid; gap: 12px; max-width: 850px; }
     details { border-radius: var(--radius); overflow: hidden; }
@@ -759,15 +661,9 @@
         grid-template-columns: 1fr;
         align-items: start;
       }
-      .portrait {
-        justify-self: stretch;
-        max-width: none;
-        min-height: 520px;
-      }
       .about-grid,
       .service-grid,
-      .process-grid,
-      .project-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr; }
       .principles { grid-template-columns: 1fr; }
       .cta-panel { align-items: stretch; flex-direction: column; }
       .cta-panel .button { width: 100%; }
@@ -776,14 +672,32 @@
       body { font-size: 16px; }
       .container { width: min(calc(100% - 28px), var(--max)); }
       .header-inner { min-height: 80px; }
-      .brand { gap: 14px; min-width: 0; }
-      .brand-copy { min-width: 0; }
-      .brand-name { white-space: nowrap; }
-      .brand-id { letter-spacing: 0.12em; }
+      .brand { flex: 1 1 auto; gap: 12px; min-width: 0; }
+      .brand-logo { width: 48px; height: 40px; }
+      .brand-copy { min-width: 0; overflow: hidden; }
+      .brand-name {
+        display: block;
+        overflow: hidden;
+        font-size: 1rem;
+        letter-spacing: 0.15em;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .brand-id {
+        display: block;
+        overflow: hidden;
+        letter-spacing: 0.1em;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
       .menu-button { width: 58px; height: 58px; flex: 0 0 auto; }
       .hero {
         min-height: 0;
         padding: 70px 0 44px;
+      }
+      .hero-copy {
+        width: calc(100vw - 28px);
+        max-width: 100%;
       }
       .hero::before {
         background:
@@ -798,9 +712,9 @@
         font-size: 0.78rem;
         letter-spacing: 0.18em;
       }
-      h1 { font-size: clamp(4rem, 17vw, 5.25rem); }
-      .hero-lead { font-size: 1.08rem; }
-      .hero-actions { width: min(72vw, 566px); }
+      h1 { max-width: 100%; font-size: clamp(3.72rem, 15.5vw, 5.25rem); }
+      .hero-lead { width: 100%; max-width: 100%; font-size: 1.08rem; }
+      .hero-actions { width: 100%; max-width: 100%; }
       .hero-actions .button {
         min-height: 52px;
         padding-inline: 18px 12px;
@@ -811,20 +725,6 @@
         height: 34px;
         margin-right: -6px;
       }
-      .portrait {
-        min-height: 360px;
-        border-radius: 28px;
-      }
-      .portrait-caption {
-        right: 20px;
-        bottom: 20px;
-        left: 20px;
-        padding: 16px;
-        grid-template-columns: 1fr;
-        gap: 8px;
-      }
-      .portrait-caption .brand-mark { font-size: 2.1rem; }
-      .portrait-caption strong { font-size: 1.35rem; }
       .credential-strip { grid-template-columns: 1fr; margin-top: 34px; }
       .credential { min-height: 72px; }
       .credential + .credential { border-top: 1px solid var(--line-soft); border-left: 0; }
@@ -862,12 +762,6 @@
         "name": "Dr. Diogo Reis | Médico CREMEB 31.442 na Bahia",
         "isPartOf": { "@id": "https://diogoreis.med.br/#website" },
         "about": { "@id": "https://diogoreis.med.br/#physician" },
-        "primaryImageOfPage": {
-          "@type": "ImageObject",
-          "url": "https://diogoreis.med.br/assets/diogo-reis.jpg",
-          "width": 1200,
-          "height": 830
-        },
         "inLanguage": "pt-BR"
       },
       {
@@ -877,7 +771,6 @@
         "honorificPrefix": "Dr.",
         "jobTitle": "Médico",
         "identifier": "CREMEB 31.442",
-        "image": "https://diogoreis.med.br/assets/diogo-reis.jpg",
         "url": "https://diogoreis.med.br/",
         "telephone": "+55 71 92003-5632",
         "knowsLanguage": ["pt-BR"],
@@ -900,7 +793,7 @@
         "@id": "https://diogoreis.med.br/#medical-service",
         "name": "Dr. Diogo Reis - Atendimento Médico",
         "url": "https://diogoreis.med.br/",
-        "image": "https://diogoreis.med.br/assets/diogo-reis.jpg",
+        "logo": "https://diogoreis.med.br/assets/logo-dr.png",
         "telephone": "+55 71 92003-5632",
         "priceRange": "$$",
         "medicalSpecialty": ["PrimaryCare", "FamilyPractice"],
@@ -987,7 +880,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="#inicio" aria-label="Ir para o início">
-        <span class="brand-mark" aria-hidden="true">DR</span>
+        <img class="brand-logo" src="assets/logo-dr.png" width="436" height="364" alt="" aria-hidden="true" decoding="async">
         <span class="brand-copy">
           <span class="brand-name">DIOGO REIS</span>
           <span class="brand-id">Médico · CREMEB 31.442 · Bahia</span>
@@ -996,8 +889,7 @@
       <nav class="desktop-nav" aria-label="Navegação principal">
         <a href="#sobre">Sobre</a>
         <a href="#atendimentos">Atendimentos</a>
-        <a href="#projetos">Projetos</a>
-        <a class="button button-primary button-small js-whatsapp" href="#" data-message="Olá, Dr. Diogo. Gostaria de informações para agendar uma consulta.">Agendar consulta</a>
+        <a class="button button-primary button-small js-whatsapp" href="https://wa.me/5571920035632?text=Ol%C3%A1%2C%20Dr.%20Diogo.%20Gostaria%20de%20informa%C3%A7%C3%B5es%20para%20agendar%20uma%20consulta." target="_blank" rel="noopener noreferrer" data-message="Olá, Dr. Diogo. Gostaria de informações para agendar uma consulta.">Agendar consulta</a>
       </nav>
       <button class="menu-button" type="button" aria-label="Abrir menu" aria-controls="mobile-nav" aria-expanded="false">
         <svg class="icon" aria-hidden="true"><use href="#i-menu"></use></svg>
@@ -1006,13 +898,12 @@
     <nav id="mobile-nav" class="container mobile-nav" data-open="false" aria-label="Navegação para celular">
       <a href="#sobre">Sobre</a>
       <a href="#atendimentos">Atendimentos</a>
-      <a href="#projetos">Projetos</a>
-      <a class="js-whatsapp" href="#" data-message="Olá, Dr. Diogo. Gostaria de informações para agendar uma consulta.">Agendar consulta</a>
+      <a class="js-whatsapp" href="https://wa.me/5571920035632?text=Ol%C3%A1%2C%20Dr.%20Diogo.%20Gostaria%20de%20informa%C3%A7%C3%B5es%20para%20agendar%20uma%20consulta." target="_blank" rel="noopener noreferrer" data-message="Olá, Dr. Diogo. Gostaria de informações para agendar uma consulta.">Agendar consulta</a>
     </nav>
     <div class="scroll-progress" aria-hidden="true"><span></span></div>
   </header>
 
-  <main id="conteudo">
+  <main id="conteudo" tabindex="-1">
     <section id="inicio" class="hero" aria-labelledby="hero-title">
       <span class="hero-orbit" aria-hidden="true"></span>
       <div class="container">
@@ -1028,7 +919,7 @@
               Atendimento médico com escuta, clareza e tempo para compreender sua história, organizar prioridades e construir uma conduta possível para a <strong>sua realidade</strong>.
             </p>
             <div class="hero-actions">
-              <a class="button button-primary js-whatsapp" href="#" data-message="Olá, Dr. Diogo. Gostaria de informações para agendar uma consulta.">
+              <a class="button button-primary js-whatsapp" href="https://wa.me/5571920035632?text=Ol%C3%A1%2C%20Dr.%20Diogo.%20Gostaria%20de%20informa%C3%A7%C3%B5es%20para%20agendar%20uma%20consulta." target="_blank" rel="noopener noreferrer" data-message="Olá, Dr. Diogo. Gostaria de informações para agendar uma consulta.">
                 <span><svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg>Agendar consulta</span>
                 <span class="arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow"></use></svg></span>
               </a>
@@ -1037,21 +928,7 @@
                 <span class="arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow"></use></svg></span>
               </a>
             </div>
-            <p class="hero-note">
-              <svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg>
-              <span>Este canal não realiza atendimento de urgência ou emergência.</span>
-            </p>
           </div>
-          <figure class="portrait">
-            <img id="portrait-image" src="assets/diogo-reis.jpg" width="1200" height="830" alt="Retrato do Dr. Diogo Reis" decoding="async" fetchpriority="high">
-            <figcaption class="portrait-caption">
-              <span class="brand-mark" aria-hidden="true">DR</span>
-              <span>
-                <strong>Dr. Diogo Reis</strong>
-                <span>Médico · CREMEB 31.442 · Bahia</span>
-              </span>
-            </figcaption>
-          </figure>
         </div>
       </div>
     </section>
@@ -1119,7 +996,7 @@
               <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span>Orientação para avaliação presencial quando necessária.</span></li>
               <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span>Consentimento para atendimento por telemedicina.</span></li>
             </ul>
-            <a class="button button-primary js-whatsapp" href="#" data-message="Olá, Dr. Diogo. Gostaria de informações para agendar uma teleconsulta.">
+            <a class="button button-primary js-whatsapp" href="https://wa.me/5571920035632?text=Ol%C3%A1%2C%20Dr.%20Diogo.%20Gostaria%20de%20informa%C3%A7%C3%B5es%20para%20agendar%20uma%20teleconsulta." target="_blank" rel="noopener noreferrer" data-message="Olá, Dr. Diogo. Gostaria de informações para agendar uma teleconsulta.">
               Solicitar agendamento
               <span class="arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow"></use></svg></span>
             </a>
@@ -1137,37 +1014,10 @@
               <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span>Participação de familiares ou cuidadores, com autorização do paciente.</span></li>
               <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span>Disponibilidade e valor informados após confirmação da localidade.</span></li>
             </ul>
-            <a class="button button-secondary js-whatsapp" href="#" data-message="Olá, Dr. Diogo. Gostaria de verificar a disponibilidade de consulta domiciliar.">
+            <a class="button button-secondary js-whatsapp" href="https://wa.me/5571920035632?text=Ol%C3%A1%2C%20Dr.%20Diogo.%20Gostaria%20de%20verificar%20a%20disponibilidade%20de%20consulta%20domiciliar." target="_blank" rel="noopener noreferrer" data-message="Olá, Dr. Diogo. Gostaria de verificar a disponibilidade de consulta domiciliar.">
               Verificar disponibilidade
               <span class="arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow"></use></svg></span>
             </a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="projetos" class="section" aria-labelledby="lab-title">
-      <div class="container lab-panel">
-        <div class="lab-intro">
-          <span class="eyebrow">Saúde pública e tecnologia</span>
-          <h2 id="lab-title">Tecnologia construída a partir do território.</h2>
-          <p>Projetos desenvolvidos para organizar informações, tornar pendências visíveis e apoiar decisões na Atenção Primária à Saúde.</p>
-        </div>
-        <div class="project-grid">
-          <article class="project">
-            <span class="project-label">Pré-natal</span>
-            <h3>GESTAR APS</h3>
-            <p>Acompanhamento organizado de gestantes, idade gestacional, consultas, exames e fatores de risco para apoiar o cuidado pré-natal.</p>
-          </article>
-          <article class="project">
-            <span class="project-label">Indicadores</span>
-            <h3>SUS-APS Indicadores</h3>
-            <p>Organização de dados assistenciais e visualização de indicadores para qualificar o planejamento de equipes e gestores.</p>
-          </article>
-          <article class="project">
-            <span class="project-label">Aplicação local</span>
-            <h3>DocaDeck</h3>
-            <p>Ferramenta offline para reunir status, pendências e linhas de cuidado sem enviar dados clínicos para serviços externos.</p>
           </article>
         </div>
       </div>
@@ -1206,7 +1056,7 @@
           <h2 id="cta-title">Solicite informações para agendamento.</h2>
           <p>Informe se procura teleconsulta ou consulta domiciliar em Vera Cruz/BA e região. A confirmação ocorre após avaliação da disponibilidade e da adequação da modalidade.</p>
         </div>
-        <a class="button button-primary js-whatsapp" href="#" data-message="Olá, Dr. Diogo. Gostaria de informações para agendar uma consulta.">
+        <a class="button button-primary js-whatsapp" href="https://wa.me/5571920035632?text=Ol%C3%A1%2C%20Dr.%20Diogo.%20Gostaria%20de%20informa%C3%A7%C3%B5es%20para%20agendar%20uma%20consulta." target="_blank" rel="noopener noreferrer" data-message="Olá, Dr. Diogo. Gostaria de informações para agendar uma consulta.">
           <svg class="icon" aria-hidden="true"><use href="#i-message"></use></svg>
           Falar pelo WhatsApp
         </a>
@@ -1312,9 +1162,6 @@
       });
     });
 
-    document.getElementById("portrait-image").addEventListener("error", (event) => {
-      event.currentTarget.remove();
-    });
     document.getElementById("current-year").textContent = new Date().getFullYear();
   </script>
 </body>

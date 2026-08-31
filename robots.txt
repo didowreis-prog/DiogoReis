@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /.edge-profile/
+Disallow: /preview-
 
 Sitemap: https://diogoreis.med.br/sitemap.xml

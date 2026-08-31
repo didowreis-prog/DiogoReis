@@ -23,7 +23,8 @@ Dr. Diogo Reis e medico registrado no CREMEB 31.442, com pagina profissional em 
 - Atenção Primaria a Saude.
 - Telemedicina.
 - Consulta domiciliar.
-- Projetos de tecnologia aplicada a saude publica: GESTAR APS, SUS-APS Indicadores e DocaDeck.
+- Adequacao da modalidade de atendimento ao contexto clinico.
+- Orientacoes administrativas para agendamento.
 
 ## Orientacao de seguranca
 
